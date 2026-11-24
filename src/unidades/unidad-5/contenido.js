@@ -35,25 +35,25 @@ export const temas = [
         id: '5-3-1',
         titulo: '5.3.1 Learnability',
         texto:
-          'Es la disposición y el método para aprender de manera continua: detectar qué hace falta saber, buscar fuentes confiables y convertir lo aprendido en una práctica aplicable al trabajo.',
+          'Es la disposición y el método para aprender de manera continua: detectar qué hace falta saber, buscar fuentes confiables y convertir lo aprendido en una práctica aplicable al trabajo. Por ejemplo, un equipo que adopta una herramienta nueva puede fijar una meta semanal, practicar con un caso real y documentar los resultados.',
       },
       {
         id: '5-3-2',
         titulo: '5.3.2 Teamability',
         texto:
-          'Es la capacidad de trabajar en equipo, incluso cuando sus integrantes están en lugares distintos o vienen de disciplinas diferentes. Requiere acuerdos claros, comunicación y responsabilidad sobre la parte que a cada quien corresponde.',
+          'Es la capacidad de trabajar en equipo, incluso cuando sus integrantes están en lugares distintos o vienen de disciplinas diferentes. Requiere acuerdos claros, comunicación y responsabilidad sobre la parte que a cada quien corresponde. En un proyecto de software, un tablero compartido, las revisiones de código y los acuerdos sobre entregas ayudan a coordinar el trabajo.',
       },
       {
         id: '5-3-3',
         titulo: '5.3.3 Networking',
         texto:
-          'Es la construcción y el mantenimiento de relaciones profesionales. Una red de contactos útil se basa en aportar, escuchar y dar seguimiento, no solo en recolectar nombres.',
+          'Es la construcción y el mantenimiento de relaciones profesionales. Una red de contactos útil se basa en aportar, escuchar y dar seguimiento, no solo en recolectar nombres. Un ejemplo es participar en una comunidad técnica, compartir una solución y mantener contacto con quienes aportan conocimientos complementarios.',
       },
       {
         id: '5-3-4',
         titulo: '5.3.4 Adaptability',
         texto:
-          'Es la capacidad de ajustarse a cambios tecnológicos, organizacionales o del mercado. Implica revisar lo que ya no funciona y modificar el plan sin perder de vista el objetivo.',
+          'Es la capacidad de ajustarse a cambios tecnológicos, organizacionales o del mercado. Implica revisar lo que ya no funciona y modificar el plan sin perder de vista el objetivo. Si cambia una plataforma de ventas, el equipo puede probar una alternativa con un grupo pequeño, medir resultados y ajustar el proceso antes de extenderlo.',
       },
     ],
   },
@@ -67,25 +67,25 @@ export const temas = [
         id: '5-4-1',
         titulo: '5.4.1 Internet de las cosas',
         texto:
-          'El internet de las cosas conecta objetos físicos con sensores y redes para generar e intercambiar datos. Se aplica en monitoreo de equipos, logística, ciudades y servicios, y obliga a cuidar la seguridad y la privacidad de la información.',
+          'El internet de las cosas conecta objetos físicos con sensores y redes para generar e intercambiar datos. Se aplica en monitoreo de equipos, logística, ciudades y servicios, y obliga a cuidar la seguridad y la privacidad de la información. En un almacén, sensores de temperatura pueden generar alertas para evitar pérdidas; se deben controlar los accesos y verificar la precisión de las mediciones.',
       },
       {
         id: '5-4-2',
         titulo: '5.4.2 Inteligencia Artificial',
         texto:
-          'La inteligencia artificial agrupa sistemas capaces de realizar tareas asociadas con la inteligencia humana, como reconocer patrones, clasificar información o apoyar decisiones. Su resultado depende de la calidad de los datos y de la revisión humana.',
+          'La inteligencia artificial agrupa sistemas capaces de realizar tareas asociadas con la inteligencia humana, como reconocer patrones, clasificar información o apoyar decisiones. Su resultado depende de la calidad de los datos y de la revisión humana. Una empresa puede clasificar solicitudes de soporte con IA, medir errores y permitir que una persona revise las clasificaciones dudosas.',
       },
       {
         id: '5-4-3',
         titulo: '5.4.3 Inteligencia de negocios',
         texto:
-          'La inteligencia de negocios reúne, integra y analiza datos para explicar lo que ocurre en la empresa y apoyar decisiones. No se limita a reportar cifras: busca que la información llegue a quien decide y en el momento en que es útil.',
+          'La inteligencia de negocios reúne, integra y analiza datos para explicar lo que ocurre en la empresa y apoyar decisiones. No se limita a reportar cifras: busca que la información llegue a quien decide y en el momento en que es útil. Un tablero de ventas puede comparar resultados por periodo y producto, siempre que los indicadores tengan definiciones consistentes.',
       },
       {
         id: '5-4-4',
         titulo: '5.4.4 Blockchain y la nube',
         texto:
-          'Blockchain es un registro distribuido que conserva un historial de transacciones difícil de alterar; la nube ofrece infraestructura y servicios bajo demanda. Juntas habilitan trazabilidad y escalabilidad, siempre que se definan reglas de acceso y respaldo.',
+          'Blockchain es un registro distribuido que conserva un historial de transacciones difícil de alterar; la nube ofrece infraestructura y servicios bajo demanda. Juntas habilitan trazabilidad y escalabilidad, siempre que se definan reglas de acceso y respaldo. Por ejemplo, un registro compartido puede apoyar la trazabilidad entre proveedores, mientras que un servicio en la nube permite consultar inventarios desde varias sucursales. Antes de elegir conviene comparar costos, riesgos y necesidades reales.',
       },
     ],
   },
