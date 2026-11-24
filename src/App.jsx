@@ -1,45 +1,76 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Unidad1 from './pages/unidad-1/Unidad1';
-import Unidad2 from './pages/unidad-2/Unidad2';
+import { useEffect } from 'react';
+import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { unidades } from './data/temario';
+import Unidad1 from './unidades/unidad-1/Unidad1';
+import Unidad2 from './unidades/unidad-2/Unidad2';
 import Unidad3 from './pages/unidad-3/Unidad3';
 import Unidad4 from './pages/unidad-4/Unidad4';
-import LegalSustentabilidad from './pages/unidad-5/legal-sustentabilidad/LegalSustentabilidad';
-import HabilidadesTendencias from './pages/unidad-5/habilidades-tendencias/HabilidadesTendencias';
+import Unidad5 from './unidades/unidad-5/Unidad5';
 import Recursos from './pages/recursos/Recursos';
 
 function Inicio() {
   return (
-    <section>
-      <h1>Gestión Empresarial — ESCOM</h1>
-      <p>Plataforma educativa interactiva basada en el programa oficial.</p>
+    <section className="portada">
+      <div className="membrete">
+        <span>Instituto Politécnico Nacional</span>
+        <span>Escuela Superior de Cómputo</span>
+      </div>
+      <h1 className="rotulo">Gestión Empresarial</h1>
+      <svg className="subrayado" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M4 12 C 78 3, 190 16, 296 7" />
+      </svg>
+      <p className="competencia">
+        Material didáctico basado en el temario oficial de la Unidad de Aprendizaje: Gestión
+        empresarial. Consulta abierta para estudiantes y apoyo en clase.
+      </p>
+      <h2>Recorrido del semestre</h2>
+      <ol className="portada-lista">
+        {unidades.map((unidad) => (
+          <li key={unidad.id}>
+            <NavLink to={unidad.ruta}>
+              <span>{unidad.numero}</span>
+              {unidad.titulo}
+            </NavLink>
+          </li>
+        ))}
+        <li>
+          <NavLink to="/recursos">
+            <span>R</span>
+            Bibliografía y recursos digitales
+          </NavLink>
+        </li>
+      </ol>
     </section>
   );
 }
 
-function Unidad5() {
-  return (
-    <section>
-      <h2>Unidad V: Tendencias en la gestión empresarial</h2>
-      <LegalSustentabilidad />
-      <HabilidadesTendencias />
-    </section>
-  );
+function ScrollAlCambiarRuta() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  return null;
 }
 
 export default function App() {
   return (
     <BrowserRouter>
-      <nav style={{ display: 'flex', gap: '1rem', padding: '1rem', flexWrap: 'wrap' }}>
-        <Link to="/">Inicio</Link>
-        <Link to="/unidad-1">Unidad I</Link>
-        <Link to="/unidad-2">Unidad II</Link>
-        <Link to="/unidad-3">Unidad III</Link>
-        <Link to="/unidad-4">Unidad IV</Link>
-        <Link to="/unidad-5">Unidad V</Link>
-        <Link to="/recursos">Recursos</Link>
+      <ScrollAlCambiarRuta />
+      <nav className="navegacion" aria-label="Navegación principal">
+        <NavLink to="/" end>
+          Inicio
+        </NavLink>
+        {unidades.map((unidad) => (
+          <NavLink key={unidad.id} to={unidad.ruta}>
+            Unidad {unidad.numero}
+          </NavLink>
+        ))}
+        <NavLink to="/recursos">Recursos</NavLink>
       </nav>
 
-      <main style={{ padding: '1rem' }}>
+      <main>
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/unidad-1" element={<Unidad1 />} />
