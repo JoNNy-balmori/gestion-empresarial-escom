@@ -25,3 +25,28 @@ dist-ssr
 
 .vscode/
 .env
+
+# Estado local de agentes y del harness
+.agent/
+.agents/
+.gemini/
+.opencode/
+skills-lock.json
+
+# Referencias visuales locales de Impeccable
+.impeccable/reference/
+
+.agent/
+.agents/
+.gemini/
+.impeccable/
+.opencode/
+
+.agent/
+.agents/
+.gemini/
+.impeccable/
+.opencode/
+DESIGN.md
+PRODUCT.md
+skills-lock.json
