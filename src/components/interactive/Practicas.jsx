@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId, useState } from 'react';
 
 const figuras = [
   {
@@ -241,6 +241,7 @@ export function FodaDiamante() {
 }
 
 export function MiniQuiz({ preguntas }) {
+  const id = useId();
   const [seleccion, setSeleccion] = useState(preguntas.map(() => null));
   const [entregado, setEntregado] = useState(false);
   const aciertos = seleccion.reduce(
@@ -250,7 +251,7 @@ export function MiniQuiz({ preguntas }) {
 
   return (
     <section className="practica" id="repaso">
-      <h3>Repaso · cinco preguntas</h3>
+      <h3>Repaso · {preguntas.length} preguntas</h3>
       <p>Selecciona una respuesta por pregunta. El puntaje es solo para tu consulta.</p>
       {preguntas.map((pregunta, indice) => (
         <fieldset key={pregunta.pregunta} className="pregunta">
@@ -261,7 +262,8 @@ export function MiniQuiz({ preguntas }) {
             <label key={opcion}>
               <input
                 type="radio"
-                name={`pregunta-${indice}`}
+                name={`${id}-pregunta-${indice}`}
+                disabled={entregado}
                 checked={seleccion[indice] === opcionIndice}
                 onChange={() =>
                   setSeleccion((anteriores) =>
@@ -280,7 +282,7 @@ export function MiniQuiz({ preguntas }) {
         </fieldset>
       ))}
       <div className="acciones">
-        <button type="button" className="accion" onClick={() => setEntregado(true)}>
+        <button type="button" className="accion" disabled={entregado || seleccion.some(r => r === null)} onClick={() => setEntregado(true)}>
           Comprobar respuestas
         </button>
         <button
