@@ -1,56 +1,5 @@
 import { useState } from 'react';
 
-const DIMENSIONES = [
-  {
-    etiqueta: 'Saber',
-    titulo: 'Conocimientos',
-    descripcion:
-      'Formación académica, dominio teórico y metodologías técnicas o administrativas (arquitectura de software, finanzas, gestión de proyectos).',
-  },
-  {
-    etiqueta: 'Saber hacer',
-    titulo: 'Habilidades y experiencia',
-    descripcion:
-      'Capacidad práctica para resolver problemas, aplicar herramientas, diseñar soluciones y tomar decisiones bajo presión.',
-  },
-  {
-    etiqueta: 'Saber ser',
-    titulo: 'Actitudes y valores',
-    descripcion:
-      'Ética profesional, liderazgo, trabajo en equipo, adaptabilidad y compromiso con la cultura y metas de la organización.',
-  },
-];
-
-const EVOLUCION = [
-  {
-    id: 'personal',
-    etapa: '1. Administración de personal',
-    enfoque: 'Tradicional / Operativo',
-    vision: 'Las personas se ven como mano de obra y un costo operativo que debe controlarse.',
-    rol: 'Ejecución de trámites administrativos, control de asistencia, expedientes y pago puntual de nómina.',
-    ejemplo:
-      'Un departamento que solo registra entradas, salidas y descuentos sin involucrarse en el crecimiento del equipo.',
-  },
-  {
-    id: 'rrhh',
-    etapa: '2. Recursos Humanos (RR. HH.)',
-    enfoque: 'Funcional / Reactivo',
-    vision: 'Las personas se consideran activos o insumos valiosos necesarios para operar la empresa.',
-    rol: 'Cubrir vacantes cuando surgen, coordinar capacitaciones generales y administrar prestaciones.',
-    ejemplo:
-      'Se abre una vacante solo después de que un desarrollador renuncia y se imparten cursos genéricos una vez al año.',
-  },
-  {
-    id: 'capital',
-    etapa: '3. Gestión del Capital Humano',
-    enfoque: 'Estratégico / Actual',
-    vision: 'Las personas son socios estratégicos e inversionistas de conocimiento que generan ventaja competitiva.',
-    rol: 'Alinear el talento con los objetivos del negocio, impulsar la innovación, cuidar el clima laboral y retener perfiles clave.',
-    ejemplo:
-      'Planes de carrera técnicos, capacitación continua en nuevas tecnologías, esquemas híbridos y seguimiento de bienestar.',
-  },
-];
-
 const FUNCIONES_CICLO = [
   {
     paso: 1,
@@ -191,11 +140,9 @@ const CASOS_PRACTICA_9 = [
 ];
 
 export default function Tema41CapitalHumano() {
-  const [etapaEvolucion, setEtapaEvolucion] = useState('capital');
   const [pasoActivo, setPasoActivo] = useState(0);
   const [seleccionesCaso, setSeleccionesCaso] = useState({});
 
-  const evolucionActual = EVOLUCION.find((e) => e.id === etapaEvolucion);
   const funcionActual = FUNCIONES_CICLO[pasoActivo];
 
   const elegirOpcionCaso = (casoId, opIdx) => {
@@ -204,81 +151,12 @@ export default function Tema41CapitalHumano() {
 
   return (
     <div>
-      {/* 4.1 Concepto y valor estratégico */}
-      <article className="int3-card">
-        <span className="int3-tag">Subtema 4.1 · Concepto y valor estratégico</span>
-        <h3>4.1 Capital humano</h3>
-        <p>
-          El <strong>capital humano</strong> es el conjunto de conocimientos, habilidades técnicas,
-          competencias directivas, experiencia, creatividad y valores que poseen las personas dentro
-          de una organización. A diferencia de la maquinaria o el equipo de cómputo —que se
-          deprecian con el tiempo—, el capital humano <strong>se revaloriza</strong> con la
-          formación, la práctica y un entorno organizacional adecuado.
-        </p>
-
-        <div className="int3-highlight">
-          <strong>Relevancia en empresas de innovación tecnológica:</strong> Dos compañías pueden
-          rentar los mismos servidores en la nube y programar en los mismos lenguajes; su ventaja
-          competitiva real depende del talento, la colaboración y la capacidad de aprendizaje de sus
-          equipos de ingeniería.
-        </div>
-      </article>
-
-      {/* 3 Dimensiones */}
-      <div className="int3-section-block">
-        <h3>Las tres dimensiones del capital humano</h3>
-        <div className="int3-grid">
-          {DIMENSIONES.map((dim) => (
-            <article key={dim.etiqueta} className="int3-card">
-              <span className="int3-tag">{dim.etiqueta}</span>
-              <h4>{dim.titulo}</h4>
-              <p>{dim.descripcion}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      {/* Evolución interactiva */}
-      <div className="int3-section-block">
-        <h3>Evolución del enfoque: de personal a capital humano</h3>
+      {/* Recorrido interactivo del ciclo de vida del colaborador */}
+      <div className="int3-section-block" style={{ marginTop: 0 }}>
+        <h3>Recorrido interactivo · Ciclo de vida del colaborador (7 etapas)</h3>
         <p style={{ marginTop: 0, fontSize: '0.93rem', color: '#475569' }}>
-          Selecciona cada etapa para comparar cómo cambia la visión sobre las personas dentro de la
-          empresa:
-        </p>
-
-        <div className="int3-pill-list">
-          {EVOLUCION.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className={`int3-tab ${etapaEvolucion === item.id ? 'active' : ''}`}
-              onClick={() => setEtapaEvolucion(item.id)}
-            >
-              {item.etapa}
-            </button>
-          ))}
-        </div>
-
-        <article className="int3-card">
-          <span className="int3-tag">Enfoque: {evolucionActual.enfoque}</span>
-          <h4>{evolucionActual.etapa}</h4>
-          <p>
-            <strong>Visión sobre las personas:</strong> {evolucionActual.vision}
-          </p>
-          <p>
-            <strong>Rol principal del área:</strong> {evolucionActual.rol}
-          </p>
-          <p style={{ marginBottom: 0 }}>
-            <strong>Ejemplo práctico:</strong> {evolucionActual.ejemplo}
-          </p>
-        </article>
-      </div>
-
-      {/* 4.1.1 Ciclo de vida del colaborador (7 funciones) */}
-      <div className="int3-section-block">
-        <h3>4.1.1 Funciones del departamento de capital humano</h3>
-        <p style={{ marginTop: 0, fontSize: '0.93rem', color: '#475569' }}>
-          Recorre las 7 etapas del ciclo de vida del colaborador haciendo clic en cada función:
+          Explora cómo aterriza cada función del departamento de capital humano en un equipo de
+          ingeniería:
         </p>
 
         <div className="int3-stepper">
@@ -331,9 +209,9 @@ export default function Tema41CapitalHumano() {
         </article>
       </div>
 
-      {/* Mini diagnóstico interactivo — Práctica 9 */}
+      {/* Diagnóstico interactivo — Práctica 9 */}
       <div className="int3-section-block">
-        <h3>Diagnóstico interactivo (Práctica 9: Capital humano y sus funciones)</h3>
+        <h3>Casos de diagnóstico (Práctica 9 · Capital humano)</h3>
         <p style={{ marginTop: 0, fontSize: '0.93rem', color: '#475569' }}>
           Analiza cada situación real e identifica qué función del departamento de capital humano
           debe intervenir prioritariamente:

@@ -3,49 +3,29 @@ import { useState } from 'react';
 const PASOS_5S = [
   {
     id: 'seiri',
-    etapa: '1.ª S',
-    nombre: 'Seiri (Clasificar)',
-    objetivo: 'Separar lo útil de lo innecesario y descartar sobrantes.',
+    nombre: '1. Seiri (Clasificar)',
     ti: 'Eliminar ramas obsoletas en Git, dependencias sin uso y código muerto.',
   },
   {
     id: 'seiton',
-    etapa: '2.ª S',
-    nombre: 'Seiton (Ordenar)',
-    objetivo: 'Asignar un lugar lógico y accesible para cada recurso.',
+    nombre: '2. Seiton (Ordenar)',
     ti: 'Organizar carpetas por módulos, nombrar archivos con convención clara y documentar rutas.',
   },
   {
     id: 'seiso',
-    etapa: '3.ª S',
-    nombre: 'Seiso (Limpiar)',
-    objetivo: 'Eliminar suciedad, fallas y atacar sus causas raíz de forma preventiva.',
+    nombre: '3. Seiso (Limpiar)',
     ti: 'Pagar deuda técnica, depurar advertencias de consola y limpiar bases de datos de prueba.',
   },
   {
     id: 'seiketsu',
-    etapa: '4.ª S',
-    nombre: 'Seiketsu (Estandarizar)',
-    objetivo: 'Convertir las tres primeras etapas en reglas visuales y repetibles.',
+    nombre: '4. Seiketsu (Estandarizar)',
     ti: 'Configurar linters (ESLint/Prettier), plantillas de Pull Request y guías de estilo.',
   },
   {
     id: 'shitsuke',
-    etapa: '5.ª S',
-    nombre: 'Shitsuke (Disciplina)',
-    objetivo: 'Mantener el hábito a largo plazo mediante auditorías y mejora continua.',
+    nombre: '5. Shitsuke (Disciplina)',
     ti: 'Hacer revisiones de código constantes y auditorías breves al cierre de cada sprint.',
   },
-];
-
-const SIETE_DESPERDICIOS = [
-  { nombre: 'Sobreproducción', ti: 'Programar funciones complejas que ningún usuario solicitó.' },
-  { nombre: 'Tiempos de espera', ti: 'Pull Requests detenidos días enteros sin revisión o aprobaciones lentas.' },
-  { nombre: 'Transporte innecesario', ti: 'Pasar archivos manualmente entre áreas o herramientas desconectadas.' },
-  { nombre: 'Sobreprocesamiento', ti: 'Trámites duplicados o sobre-ingeniería para problemas sencillos.' },
-  { nombre: 'Exceso de inventario', ti: 'Código terminado pero sin desplegar acumulado en ramas paralelas.' },
-  { nombre: 'Movimientos inútiles', ti: 'Buscar documentación dispersa en chats, correos y carpetas sin orden.' },
-  { nombre: 'Defectos y retrabajo', ti: 'Corregir errores en producción que pudieron evitarse con pruebas previas.' },
 ];
 
 const MAPA_FUNCIONAL = [
@@ -99,24 +79,6 @@ const MAPA_FUNCIONAL = [
         entregable: 'Evaluaciones de vulnerabilidades y cumplimiento de políticas de seguridad.',
       },
     ],
-  },
-];
-
-const TIPOS_BENCHMARKING = [
-  {
-    tipo: 'Interno',
-    comparacion: 'Entre áreas, equipos o sucursales de la misma organización.',
-    ejemplo: 'Replicar el flujo de pruebas automatizadas del equipo más eficiente en los demás equipos de desarrollo.',
-  },
-  {
-    tipo: 'Competitivo',
-    comparacion: 'Frente a competidores directos que operan en el mismo mercado.',
-    ejemplo: 'Comparar tiempos de carga, planes de precios y experiencia de registro frente a la plataforma líder.',
-  },
-  {
-    tipo: 'Funcional / Genérico',
-    comparacion: 'Frente a empresas líderes de otras industrias con procesos similares.',
-    ejemplo: 'Analizar cómo una fintech diseña su centro de ayuda para mejorar el soporte de una plataforma educativa.',
   },
 ];
 
@@ -215,7 +177,7 @@ const CASOS_PRACTICA_12 = [
 ];
 
 export default function Tema44Herramientas() {
-  const [herramienta, setHerramienta] = useState('cincoS');
+  const [simulador, setSimulador] = useState('cincoS');
   const [completadas5s, setCompletadas5s] = useState(['seiri', 'seiton']);
   const [areaFuncionalId, setAreaFuncionalId] = useState('producto');
   const [modulosActivos, setModulosActivos] = useState(['ventas', 'inventarios', 'finanzas']);
@@ -246,177 +208,76 @@ export default function Tema44Herramientas() {
 
   return (
     <div>
-      {/* Introducción */}
-      <article className="int3-card">
-        <span className="int3-tag">Subtema 4.4 · Herramientas aplicadas (Práctica 12)</span>
-        <h3>4.4 Herramientas de gestión del Capital Humano y de calidad</h3>
-        <p>
-          Llevar los principios de capital humano y calidad a la operación diaria requiere
-          metodologías y sistemas concretos. Estas cinco herramientas permiten ordenar espacios
-          físicos y digitales, eliminar desperdicios, definir competencias por puesto, aprender de
-          líderes del sector e integrar la información de toda la empresa.
-        </p>
-      </article>
-
-      {/* Selector de las 5 herramientas */}
-      <div className="int3-section-block">
-        <h3>Explora las 5 herramientas del programa oficial</h3>
+      {/* Simuladores interactivos de herramientas */}
+      <div className="int3-section-block" style={{ marginTop: 0 }}>
+        <h3>Simuladores interactivos · Herramientas de gestión</h3>
         <div className="int3-pill-list">
           {[
-            { id: 'cincoS', label: "4.4.1 Las 5's" },
-            { id: 'jit', label: '4.4.2 Just in Time' },
-            { id: 'funcional', label: '4.4.3 Análisis funcional' },
-            { id: 'benchmarking', label: '4.4.4 Benchmarking' },
-            { id: 'erp', label: '4.4.5 ERP' },
+            { id: 'cincoS', label: "Checklist Las 5's" },
+            { id: 'funcional', label: 'Mapa Funcional (3 niveles)' },
+            { id: 'erp', label: 'Silos vs. ERP' },
           ].map((item) => (
             <button
               key={item.id}
               type="button"
-              className={`int3-tab ${herramienta === item.id ? 'active' : ''}`}
-              onClick={() => setHerramienta(item.id)}
+              className={`int3-tab ${simulador === item.id ? 'active' : ''}`}
+              onClick={() => setSimulador(item.id)}
             >
               {item.label}
             </button>
           ))}
         </div>
 
-        {/* 4.4.1 Las 5's */}
-        {herramienta === 'cincoS' && (
+        {/* Checklist 5's */}
+        {simulador === 'cincoS' && (
           <article className="int3-card">
-            <span className="int3-tag">4.4.1 · Orden, limpieza y disciplina operativa</span>
-            <h3>Las 5&apos;s</h3>
-            <p>
-              Metodología japonesa originada en Toyota orientada a crear entornos de trabajo —tanto
-              físicos como digitales— clasificados, ordenados y estandarizados para reducir errores,
-              tiempos de búsqueda y accidentes.
+            <span className="int3-tag">4.4.1 · Auditoría práctica</span>
+            <h4>Audita Las 5&apos;s en tu repositorio o equipo</h4>
+            <p style={{ margin: '0.25rem 0 0.75rem', fontSize: '0.9rem', color: '#475569' }}>
+              Progreso actual: <strong>{completadas5s.length} / 5</strong> etapas implementadas
             </p>
 
-            <div className="int3-table-wrap">
-              <table className="int3-table">
-                <thead>
-                  <tr>
-                    <th>Etapa</th>
-                    <th>Término</th>
-                    <th>Objetivo</th>
-                    <th>Aplicación en TI</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {PASOS_5S.map((p) => (
-                    <tr key={p.id}>
-                      <td>
-                        <strong>{p.etapa}</strong>
-                      </td>
-                      <td>
-                        <strong>{p.nombre}</strong>
-                      </td>
-                      <td>{p.objetivo}</td>
-                      <td>{p.ti}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            {PASOS_5S.map((paso) => {
+              const marcado = completadas5s.includes(paso.id);
+              return (
+                <label
+                  key={paso.id}
+                  className={`int3-check-item ${marcado ? 'done' : ''}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={marcado}
+                    onChange={() => toggle5s(paso.id)}
+                  />
+                  <span>
+                    <strong>{paso.nombre}:</strong> {paso.ti}
+                  </span>
+                </label>
+              );
+            })}
 
-            <div style={{ marginTop: '1.25rem' }}>
-              <h4>Checklist interactivo: audita Las 5&apos;s en tu proyecto</h4>
-              <p style={{ margin: '0.25rem 0 0.75rem', fontSize: '0.9rem', color: '#475569' }}>
-                Progreso actual: <strong>{completadas5s.length} / 5</strong> etapas implementadas
-              </p>
-
-              {PASOS_5S.map((paso) => {
-                const marcado = completadas5s.includes(paso.id);
-                return (
-                  <label
-                    key={paso.id}
-                    className={`int3-check-item ${marcado ? 'done' : ''}`}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={marcado}
-                      onChange={() => toggle5s(paso.id)}
-                    />
-                    <span>
-                      <strong>{paso.nombre}:</strong> {paso.ti}
-                    </span>
-                  </label>
-                );
-              })}
-
-              {completadas5s.length === 5 && (
-                <div className="int3-feedback ok">
-                  <strong>¡Entorno estandarizado!</strong> Completaste las 5 etapas. La clave de{' '}
-                  <em>Shitsuke</em> es repetir esta breve verificación al cierre de cada sprint.
-                </div>
-              )}
-            </div>
+            {completadas5s.length === 5 && (
+              <div className="int3-feedback ok">
+                <strong>¡Entorno estandarizado!</strong> Completaste las 5 etapas. La clave de{' '}
+                <em>Shitsuke</em> es repetir esta breve verificación al cierre de cada sprint.
+              </div>
+            )}
           </article>
         )}
 
-        {/* 4.4.2 Just in Time */}
-        {herramienta === 'jit' && (
+        {/* Mapa Funcional */}
+        {simulador === 'funcional' && (
           <article className="int3-card">
-            <span className="int3-tag">4.4.2 · Producción y entrega bajo demanda</span>
-            <h3>Just in Time (JIT)</h3>
-            <p>
-              Filosofía operativa que busca producir, adquirir o entregar únicamente lo necesario, en
-              la cantidad exacta y en el momento oportuno, reduciendo inventarios y tiempos muertos.
-            </p>
-
-            <div className="int3-grid">
-              <div className="int3-map-box">
-                <h4>Enfoque tradicional (Push)</h4>
-                <p style={{ marginBottom: 0 }}>
-                  Produce grandes lotes "por si se necesitan", acumulando inventarios costosos o
-                  meses de código sin probar con usuarios reales.
-                </p>
-              </div>
-              <div className="int3-map-box root" style={{ textAlign: 'left' }}>
-                <h4>Enfoque Just in Time (Pull)</h4>
-                <p style={{ marginBottom: 0 }}>
-                  La demanda real dispara el trabajo: entregas incrementales en desarrollo ágil,
-                  límites de trabajo en progreso (Kanban) y autoescalado en la nube.
-                </p>
-              </div>
-            </div>
-
-            <h4 style={{ marginTop: '1rem' }}>Los 7 desperdicios (Muda) que combate JIT en TI</h4>
-            <div className="int3-muda-grid">
-              {SIETE_DESPERDICIOS.map((m) => (
-                <div key={m.nombre} className="int3-muda-item">
-                  <strong>{m.nombre}:</strong> {m.ti}
-                </div>
-              ))}
-            </div>
-
-            <div className="int3-highlight">
-              <strong>Riesgo clave a gestionar:</strong> Al eliminar grandes reservas, JIT exige
-              proveedores confiables y calidad controlada; una falla en un eslabón crítico puede
-              detener toda la cadena.
-            </div>
-          </article>
-        )}
-
-        {/* 4.4.3 Análisis funcional */}
-        {herramienta === 'funcional' && (
-          <article className="int3-card">
-            <span className="int3-tag">4.4.3 · Competencias y diseño de puestos</span>
-            <h3>Análisis funcional</h3>
-            <p>
-              Técnica de gestión del capital humano que descompone el <strong>propósito clave</strong>{' '}
-              de la empresa en funciones principales, subfunciones y competencias observables hasta
-              definir qué resultados concretos debe entregar cada puesto.
-            </p>
-
-            <h4 style={{ marginTop: '1rem' }}>Simulador de Mapa Funcional (3 niveles)</h4>
+            <span className="int3-tag">4.4.3 · Simulador de competencias</span>
+            <h4>Mapa Funcional (Propósito → Área → Puestos TI)</h4>
             <p style={{ margin: '0.25rem 0 0.75rem', fontSize: '0.9rem', color: '#475569' }}>
               Selecciona un área funcional para ver cómo el propósito de una empresa tecnológica se
-              traduce en competencias y entregables reales por rol:
+              desglosa en competencias y entregables por rol:
             </p>
 
             <div className="int3-map-box root">
               <span className="int3-tag" style={{ marginBottom: '0.35rem' }}>
-                Nivel 1 · Propósito clave de la organización
+                Nivel 1 · Propósito clave
               </span>
               <p style={{ margin: 0, fontWeight: 700 }}>
                 Desarrollar y operar soluciones de software confiables que generen valor continuo al
@@ -453,10 +314,10 @@ export default function Tema44Herramientas() {
                 <div key={r.rol} className="int3-map-box" style={{ marginBottom: 0 }}>
                   <h4>{r.rol}</h4>
                   <p style={{ margin: '0.25rem 0 0.5rem' }}>
-                    <strong>Competencias requeridas:</strong> {r.competencias}
+                    <strong>Competencias:</strong> {r.competencias}
                   </p>
                   <p style={{ margin: 0 }}>
-                    <strong>Resultado / Entregable:</strong> {r.entregable}
+                    <strong>Entregable:</strong> {r.entregable}
                   </p>
                 </div>
               ))}
@@ -464,65 +325,14 @@ export default function Tema44Herramientas() {
           </article>
         )}
 
-        {/* 4.4.4 Benchmarking */}
-        {herramienta === 'benchmarking' && (
+        {/* Simulador ERP */}
+        {simulador === 'erp' && (
           <article className="int3-card">
-            <span className="int3-tag">4.4.4 · Comparación sistemática y mejores prácticas</span>
-            <h3>Benchmarking</h3>
-            <p>
-              Proceso continuo de medir y comparar productos, servicios y procesos propios frente a
-              referentes destacados para <strong>adaptar mejores prácticas</strong> a la realidad de
-              la empresa (no copiarlas sin contexto) y cerrar brechas de desempeño.
-            </p>
-
-            <div className="int3-table-wrap">
-              <table className="int3-table">
-                <thead>
-                  <tr>
-                    <th>Tipo</th>
-                    <th>Con quién se compara</th>
-                    <th>Ejemplo en empresas de TI</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {TIPOS_BENCHMARKING.map((b) => (
-                    <tr key={b.tipo}>
-                      <td>
-                        <strong>{b.tipo}</strong>
-                      </td>
-                      <td>{b.comparacion}</td>
-                      <td>{b.ejemplo}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="int3-highlight">
-              <strong>5 pasos para aplicarlo:</strong> 1) Definir qué proceso y KPIs medir → 2)
-              Recopilar datos confiables → 3) Identificar brechas de desempeño → 4) Adaptar e
-              implementar mejoras al contexto propio → 5) Monitorear resultados continuamente.
-            </div>
-          </article>
-        )}
-
-        {/* 4.4.5 ERP */}
-        {herramienta === 'erp' && (
-          <article className="int3-card">
-            <span className="int3-tag">4.4.5 · Integración empresarial en tiempo real</span>
-            <h3>ERP (Enterprise Resource Planning)</h3>
-            <p>
-              Sistema modular que centraliza en una <strong>sola base de datos</strong> la operación
-              de ventas, inventarios, compras, capital humano y finanzas, eliminando hojas de cálculo
-              aisladas (silos) y recapturas manuales. Ejemplos: <strong>SAP S/4HANA</strong>,{' '}
-              <strong>Oracle NetSuite</strong>, <strong>Microsoft Dynamics 365</strong> y{' '}
-              <strong>Odoo</strong>.
-            </p>
-
-            <h4 style={{ marginTop: '1rem' }}>Simulador: Silos aislados vs. ERP centralizado</h4>
+            <span className="int3-tag">4.4.5 · Simulador de integración</span>
+            <h4>Silos aislados vs. ERP centralizado</h4>
             <p style={{ margin: '0.25rem 0 0.75rem', fontSize: '0.9rem', color: '#475569' }}>
-              Activa o desactiva módulos para observar qué procesos se sincronizan automáticamente
-              cuando comparten una base de datos ERP y qué fallas persisten cuando quedan aislados:
+              Activa o desactiva módulos para ver qué flujos se automatizan en una base de datos
+              única y qué fallas persisten cuando un departamento opera aislado:
             </p>
 
             <div className="int3-erp-modules">
@@ -586,23 +396,13 @@ export default function Tema44Herramientas() {
                 </div>
               </div>
             </div>
-
-            <div className="int3-highlight">
-              <strong>Retos reales en proyectos de ISC:</strong> Implantar un ERP no falla solo por
-              código; los mayores riesgos son datos históricos sucios, sobrecostos por
-              personalización excesiva, falta de capacitación y resistencia cultural al cambio.
-            </div>
           </article>
         )}
       </div>
 
       {/* Diagnóstico interactivo — Práctica 12 */}
       <div className="int3-section-block">
-        <h3>Diagnóstico interactivo (Práctica 12: Herramientas de gestión)</h3>
-        <p style={{ marginTop: 0, fontSize: '0.93rem', color: '#475569' }}>
-          Identifica qué herramienta resuelve mejor cada cuello de botella organizacional:
-        </p>
-
+        <h3>Casos de diagnóstico (Práctica 12 · Herramientas de gestión)</h3>
         {CASOS_PRACTICA_12.map((caso) => {
           const elegido = respuestasCaso[caso.id];
           const respondido = elegido !== undefined;
