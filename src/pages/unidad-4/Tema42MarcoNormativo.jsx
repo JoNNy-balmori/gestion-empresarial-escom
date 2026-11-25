@@ -1,101 +1,5 @@
 import { useState } from 'react';
 
-const PILARES_NORMATIVOS = [
-  {
-    id: 'constitucion',
-    paso: 1,
-    corto: 'Art. 123 CPEUM',
-    titulo: '1. Constitución Política (Artículo 123)',
-    nivel: 'Base suprema constitucional',
-    resumen:
-      'Establece las garantías laborales irrenunciables en México. Se divide en Apartado A (empresas privadas, startups y servicios) y Apartado B (sector público).',
-    puntos: [
-      'En Gestión Empresarial aplica directamente el Apartado A para organizaciones privadas de innovación tecnológica.',
-      'Consagra la jornada máxima, salario mínimo, descanso semanal, PTU, seguridad social y libertad sindical.',
-    ],
-    impactoTI:
-      'Ningún contrato de confidencialidad ni política interna de una empresa de software puede estar por encima de los derechos del Art. 123.',
-  },
-  {
-    id: 'lft',
-    paso: 2,
-    corto: 'Ley Federal del Trabajo',
-    titulo: '2. Ley Federal del Trabajo (LFT)',
-    nivel: 'Ley reglamentaria del Apartado A',
-    resumen:
-      'Regula a detalle la relación individual y colectiva entre patrón y trabajador, así como contratos, prestaciones mínimas, causas de rescisión y conciliación.',
-    puntos: [
-      'Existe relación laboral siempre que haya trabajo personal, subordinación (horario, jefe e instrucciones) y pago de salario.',
-      'Fija las reglas de vacaciones, aguinaldo, prima vacacional, horas extra, finiquito, liquidación y teletrabajo.',
-    ],
-    impactoTI:
-      'Define si un programador está correctamente contratado en nómina o si existe simulación laboral bajo un esquema indebido de honorarios.',
-  },
-  {
-    id: 'seguridad',
-    paso: 3,
-    corto: 'Seguridad Social',
-    titulo: '3. Leyes de Seguridad Social (IMSS, INFONAVIT y SAR)',
-    nivel: 'Protección social obligatoria',
-    resumen:
-      'Asegura la cobertura médica, protección ante riesgos de trabajo, fondo para vivienda y ahorro para el retiro (AFORE) de toda persona trabajadora.',
-    puntos: [
-      'El alta ante el IMSS debe realizarse desde el primer día laboral con el salario real integrado.',
-      'Es una obligación patronal irrenunciable: ni siquiera un acuerdo firmado por el empleado exime a la empresa.',
-    ],
-    impactoTI:
-      'Al presupuestar un equipo de desarrollo en un proyecto, la empresa debe contemplar la carga social patronal (alrededor de 25% a 35% adicional al sueldo bruto).',
-  },
-  {
-    id: 'noms',
-    paso: 4,
-    corto: 'NOMs STPS en TI',
-    titulo: '4. Normas Oficiales Mexicanas (NOM-035 y NOM-037)',
-    nivel: 'Normatividad técnica obligatoria',
-    resumen:
-      'Disposiciones de la Secretaría del Trabajo y Previsión Social enfocadas en seguridad, higiene, salud mental y condiciones de trabajo remoto.',
-    puntos: [
-      'NOM-035: obliga a identificar y prevenir factores de riesgo psicosocial (sobrecarga extrema, liderazgo negativo y violencia laboral).',
-      'NOM-037 (Teletrabajo): aplica cuando más del 40% de la jornada es remota; exige entregar equipo y silla ergonómica, aportar a luz/internet y respetar la desconexión digital.',
-    ],
-    impactoTI:
-      'Clave en empresas de desarrollo con modalidad remota o híbrida y en la prevención del desgaste (burnout) previo a entregas críticas.',
-  },
-];
-
-const PRESTACIONES_MINIMAS = [
-  {
-    concepto: 'Jornada laboral',
-    minimo: 'Diurna: 8 h · Nocturna: 7 h · Mixta: 7.5 h',
-    clave: 'Mínimo 1 día de descanso pagado por cada 6 trabajados; prima dominical del 25% si se labora en domingo.',
-  },
-  {
-    concepto: 'Vacaciones',
-    minimo: '12 días pagados al cumplir el 1.er año',
-    clave: 'Aumentan 2 días por año hasta 20 días en el 5.º año; después suman 2 días cada 5 años.',
-  },
-  {
-    concepto: 'Prima vacacional',
-    minimo: '25% adicional sobre los días de vacaciones',
-    clave: 'Prestación obligatoria destinada a que el colaborador disfrute su periodo de descanso.',
-  },
-  {
-    concepto: 'Aguinaldo',
-    minimo: '15 días de salario como mínimo',
-    clave: 'Debe pagarse antes del 20 de diciembre (o su parte proporcional si no se laboró el año completo).',
-  },
-  {
-    concepto: 'PTU (Utilidades)',
-    minimo: '10% de la utilidad fiscal repartible',
-    clave: 'Derecho anual en empresas que generen utilidades, conforme a los límites establecidos en la LFT.',
-  },
-  {
-    concepto: 'Seguridad social',
-    minimo: 'Alta en IMSS, INFONAVIT y AFORE desde el día 1',
-    clave: 'Protege salud, incapacidades, retiro y vivienda; no puede sustituirse por pagos en efectivo.',
-  },
-];
-
 const COMPARATIVAS = {
   terminacion: {
     titulo: 'Finiquito vs. Liquidación',
@@ -209,13 +113,11 @@ const formatoMXN = new Intl.NumberFormat('es-MX', {
 });
 
 export default function Tema42MarcoNormativo() {
-  const [pilarIdx, setPilarIdx] = useState(0);
   const [comparativaActiva, setComparativaActiva] = useState('terminacion');
   const [sueldoMensual, setSueldoMensual] = useState('18000');
   const [aniosAntiguedad, setAniosAntiguedad] = useState('1');
   const [respuestasCaso, setRespuestasCaso] = useState({});
 
-  const pilarActual = PILARES_NORMATIVOS[pilarIdx];
   const compActual = COMPARATIVAS[comparativaActiva];
 
   const sueldoNum = Math.max(0, Number(sueldoMensual) || 0);
@@ -231,92 +133,9 @@ export default function Tema42MarcoNormativo() {
 
   return (
     <div>
-      {/* Introducción */}
-      <article className="int3-card">
-        <span className="int3-tag">Subtema 4.2 · 4 h teoría + 1 h práctica</span>
-        <h3>4.2 Marco normativo de las relaciones laborales</h3>
-        <p>
-          El marco normativo laboral define las reglas, derechos irrenunciables y obligaciones que
-          equilibran la relación entre empleadores y trabajadores. Para un ingeniero en sistemas —ya
-          sea como colaborador o al liderar una empresa de base tecnológica—, conocer estas leyes
-          evita riesgos financieros, sanciones administrativas y conflictos internos.
-        </p>
-
-        <div className="int3-highlight">
-          <strong>Resolución de conflictos laborales:</strong> Ante una controversia individual, el
-          sistema mexicano exige agotar una etapa de <strong>conciliación prejudicial obligatoria</strong>{' '}
-          ante el Centro de Conciliación antes de escalar a un Tribunal Laboral.
-        </div>
-      </article>
-
-      {/* Pirámide normativa interactiva */}
-      <div className="int3-section-block">
-        <h3>Jerarquía normativa laboral en México</h3>
-        <p style={{ marginTop: 0, fontSize: '0.93rem', color: '#475569' }}>
-          Explora los 4 niveles legales que rigen a las empresas privadas y tecnológicas:
-        </p>
-
-        <div className="int3-stepper">
-          {PILARES_NORMATIVOS.map((pilar, idx) => (
-            <button
-              key={pilar.id}
-              type="button"
-              className={`int3-step-btn ${pilarIdx === idx ? 'active' : ''}`}
-              onClick={() => setPilarIdx(idx)}
-            >
-              <span className="int3-step-num">{pilar.paso}</span>
-              <span>{pilar.corto}</span>
-            </button>
-          ))}
-        </div>
-
-        <article className="int3-card">
-          <span className="int3-tag">{pilarActual.nivel}</span>
-          <h4>{pilarActual.titulo}</h4>
-          <p>{pilarActual.resumen}</p>
-          <ul style={{ textAlign: 'left' }}>
-            {pilarActual.puntos.map((punto) => (
-              <li key={punto}>{punto}</li>
-            ))}
-          </ul>
-          <div className="int3-highlight">
-            <strong>Impacto en empresas de TI:</strong> {pilarActual.impactoTI}
-          </div>
-        </article>
-      </div>
-
-      {/* Tabla de prestaciones mínimas */}
-      <div className="int3-section-block">
-        <h3>Condiciones y prestaciones mínimas obligatorias (LFT)</h3>
-        <article className="int3-card">
-          <div className="int3-table-wrap">
-            <table className="int3-table">
-              <thead>
-                <tr>
-                  <th>Concepto</th>
-                  <th>Mínimo legal</th>
-                  <th>Dato clave para la gestión</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PRESTACIONES_MINIMAS.map((row) => (
-                  <tr key={row.concepto}>
-                    <td>
-                      <strong>{row.concepto}</strong>
-                    </td>
-                    <td>{row.minimo}</td>
-                    <td>{row.clave}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </article>
-      </div>
-
       {/* Calculadora interactiva de prestaciones */}
-      <div className="int3-section-block">
-        <h3>Calculadora didáctica de prestaciones mínimas de ley</h3>
+      <div className="int3-section-block" style={{ marginTop: 0 }}>
+        <h3>Calculadora didáctica · Prestaciones mínimas de ley (LFT)</h3>
         <article className="int3-card">
           <p style={{ marginTop: 0, fontSize: '0.92rem', color: '#475569' }}>
             Simula un salario mensual bruto y años cumplidos para estimar las prestaciones mínimas
@@ -325,7 +144,7 @@ export default function Tema42MarcoNormativo() {
 
           <div className="int3-calc-grid">
             <div className="int3-field">
-              <label htmlFor="sueldo-mensual">Sueldo mensual bruto (MXN) </label>
+              <label htmlFor="sueldo-mensual">Sueldo mensual bruto (MXN)</label>
               <input
                 id="sueldo-mensual"
                 type="number"
@@ -337,7 +156,7 @@ export default function Tema42MarcoNormativo() {
             </div>
 
             <div className="int3-field">
-              <label htmlFor="anios-antiguedad">Años de antigüedad (1 a 35) </label>
+              <label htmlFor="anios-antiguedad">Años de antigüedad (1 a 35)</label>
               <input
                 id="anios-antiguedad"
                 type="number"
@@ -351,19 +170,19 @@ export default function Tema42MarcoNormativo() {
 
           <div className="int3-results-grid">
             <div className="int3-stat-box">
-              <span className="int3-stat-label">Salario diario base </span>
+              <span className="int3-stat-label">Salario diario base</span>
               <span className="int3-stat-value">{formatoMXN.format(salarioDiario)}</span>
             </div>
             <div className="int3-stat-box">
-              <span className="int3-stat-label">Vacaciones anuales </span>
+              <span className="int3-stat-label">Vacaciones anuales</span>
               <span className="int3-stat-value">{diasVacaciones} días</span>
             </div>
             <div className="int3-stat-box">
-              <span className="int3-stat-label">Prima vacacional (25%) </span>
+              <span className="int3-stat-label">Prima vacacional (25%)</span>
               <span className="int3-stat-value">{formatoMXN.format(primaVacacional)}</span>
             </div>
             <div className="int3-stat-box">
-              <span className="int3-stat-label">Aguinaldo mínimo (15 días) </span>
+              <span className="int3-stat-label">Aguinaldo mínimo (15 días)</span>
               <span className="int3-stat-value">{formatoMXN.format(aguinaldoMinimo)}</span>
             </div>
           </div>
@@ -376,7 +195,7 @@ export default function Tema42MarcoNormativo() {
 
       {/* Comparador interactivo */}
       <div className="int3-section-block">
-        <h3>Comparativas clave para la gestión de talento</h3>
+        <h3>Comparador aplicado · Contratación y terminación laboral</h3>
         <div className="int3-pill-list">
           <button
             type="button"
@@ -414,7 +233,7 @@ export default function Tema42MarcoNormativo() {
 
       {/* Auditoría legal interactiva — Práctica 10 */}
       <div className="int3-section-block">
-        <h3>Auditoría legal interactiva (Práctica 10: Marco normativo)</h3>
+        <h3>Auditoría legal (Práctica 10 · Marco normativo)</h3>
         <p style={{ marginTop: 0, fontSize: '0.93rem', color: '#475569' }}>
           Evalúa cada escenario de una empresa tecnológica y determina la postura correcta conforme
           a la legislación laboral mexicana:
