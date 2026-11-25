@@ -15,11 +15,14 @@ export default function UnitLayout({ unidad, temas, children }) {
       ? unidades[posicion + 1]
       : { ruta: '/recursos', titulo: 'Bibliografía y recursos digitales' };
 
-  useEffect(() => {
-    const ids = temas.flatMap((tema) => [
-      tema.id,
-      ...(tema.subtemas ?? []).map((subtema) => subtema.id),
-    ]);
+useEffect(() => {
+    const ids = [
+      ...temas.flatMap((tema) => [
+        tema.id,
+        ...(tema.subtemas ?? []).map((subtema) => subtema.id),
+      ]),
+      ...(tienePracticas ? ['practicas'] : []),
+    ];
 
     const actualizar = () => {
       let actual = ids[0];
@@ -33,7 +36,7 @@ export default function UnitLayout({ unidad, temas, children }) {
     actualizar();
     window.addEventListener('scroll', actualizar, { passive: true });
     return () => window.removeEventListener('scroll', actualizar);
-  }, [temas]);
+  }, [temas, tienePracticas]);
 
   useEffect(() => {
     if (!indiceAbierto) return undefined;
@@ -75,7 +78,12 @@ export default function UnitLayout({ unidad, temas, children }) {
           ))}
           {tienePracticas && (
             <li>
-              <a href="#practicas" onClick={() => setIndiceAbierto(false)}>
+              <a
+                href="#practicas"
+                className={seccionActiva === 'practicas' ? 'activo' : undefined}
+                aria-current={seccionActiva === 'practicas' ? 'location' : undefined}
+                onClick={() => setIndiceAbierto(false)}
+              >
                 Prácticas y repaso
               </a>
             </li>

@@ -1,29 +1,76 @@
 export const temas = [
-  {
+ {
     id: '5-1',
     titulo: '5.1 Aspectos legales',
     texto:
-      'La operación digital de una empresa se desarrolla dentro de un marco legal. Conocer ese marco permite usar tecnología y contenido sin vulnerar derechos de terceros ni exponer a la organización a sanciones.',
+      'La operación de una empresa de base tecnológica se desarrolla dentro de un marco jurídico que protege tanto sus activos intangibles como los derechos de sus usuarios. Conocer las figuras legales vigentes en México evita sanciones, pérdida de derechos sobre el código y conflictos por licencias o uso indebido de datos.',
+    comparativa: [
+      [
+        'Derechos de Autor (INDAUTOR)',
+        'Ley Federal del Derecho de Autor',
+        'Protege código fuente y objeto, bases de datos originales, interfaces, manuales y documentación. Distingue derechos morales (irrenunciables) y patrimoniales.',
+      ],
+      [
+        'Propiedad Industrial (IMPI)',
+        'Ley Federal de Protección a la Propiedad Industrial',
+        'Protege marcas y logotipos (10 años renovables), patentes de invenciones técnicas, modelos de utilidad y diseños industriales.',
+      ],
+      [
+        'Secreto Industrial (LFPPI / NDA)',
+        'Resguardo confidencial sin registro público',
+        'Protege algoritmos propios, arquitecturas críticas o listas comerciales que dan ventaja competitiva y se cuidan mediante contratos de confidencialidad y control de accesos.',
+      ],
+    ],
     subtemas: [
       {
         id: '5-1-1',
         titulo: '5.1.1 Propiedad intelectual',
         texto:
-          'La propiedad intelectual protege las creaciones del ingenio: obras, marcas, invenciones y secretos industriales. En un proyecto de software importa revisar la titularidad del código, las licencias de las bibliotecas que se usan y los derechos sobre el contenido que se publica.',
+          'Protege las creaciones del intelecto mediante derechos de autor (INDAUTOR) y propiedad industrial (IMPI). En proyectos de software en México, el código fuente se registra ante INDAUTOR como programa de cómputo y el nombre comercial o logotipo ante el IMPI como marca. También es indispensable auditar licencias de terceros: software propietario (EULA), código abierto permisivo (MIT, Apache 2.0), copyleft (GPL, que exige liberar derivados bajo la misma licencia) y Creative Commons (BY, NC, SA, ND) para contenidos visuales o textuales.',
       },
       {
         id: '5-1-2',
         titulo: '5.1.2 Uso de información digital',
         texto:
-          'Usar información digital implica distinguir entre datos públicos, confidenciales y personales. La organización debe respetar las licencias de uso, proteger los datos de las personas y citar la fuente cuando utiliza material de terceros.',
+          'Implica clasificar la información en pública, confidencial, datos personales y datos personales sensibles. En el sector privado mexicano, la LFPDPPP obliga a presentar un Aviso de Privacidad claro antes de recabar datos y a garantizar los Derechos ARCO (Acceso, Rectificación, Cancelación y Oposición). A nivel técnico se respalda con la tríada CIA de seguridad de la información (Confidencialidad, Integridad y Disponibilidad), validez de firma electrónica (e.firma / NOM-151) y prevención de delitos informáticos.',
       },
     ],
   },
-  {
+{
     id: '5-2',
     titulo: '5.2 Responsabilidad social y sustentabilidad',
     texto:
-      'La responsabilidad social considera el efecto de las decisiones de la empresa en sus colaboradores, clientes, comunidad y entorno. La sustentabilidad busca que la operación pueda mantenerse en el tiempo sin agotar los recursos que necesita.',
+      'La Responsabilidad Social Empresarial (RSE) es el compromiso ético y estratégico de gestionar de forma transparente los impactos de la organización sobre sus grupos de interés (colaboradores, clientes, proveedores, comunidad y entorno). La sustentabilidad complementa este enfoque asegurando que el modelo de negocio satisfaga necesidades actuales sin comprometer los recursos de generaciones futuras, evitando prácticas engañosas como el greenwashing.',
+    comparativa: [
+      [
+        'Dimensión Ambiental',
+        'Reducir huella de carbono, consumo energético y residuos bajo economía circular.',
+        'Servidores en la nube con energía renovable (Green Cloud), reciclaje responsable de hardware (e-waste) y extensión de vida útil de equipos.',
+      ],
+      [
+        'Dimensión Social',
+        'Garantizar condiciones laborales dignas, inclusión, equidad y aporte comunitario.',
+        'Interfaces accesibles (estándares WCAG), privacidad del usuario, eliminación del exceso de horas (crunch) y reducción de la brecha digital.',
+      ],
+      [
+        'Dimensión Económica',
+        'Rentabilidad sana a largo plazo con ética, transparencia fiscal y valor compartido.',
+        'Licitaciones transparentes, pagos justos a proveedores y modelos de suscripción claros sin patrones oscuros (dark patterns).',
+      ],
+      [
+        'Dimensión Tecnológica',
+        'Orientar la innovación para que sea eficiente, segura, auditable y centrada en las personas.',
+        'Green Software (código y consultas optimizadas de bajo consumo), auditoría de sesgos en IA y rechazo a la obsolescencia programada.',
+      ],
+    ],
+    subtemas: [
+      {
+        id: '5-2-marcos',
+        titulo: 'Marcos y estándares de referencia (ODS, ESG, ISO 26000 y ESR)',
+        texto:
+          'El desempeño responsable se evalúa mediante estándares verificables: los Objetivos de Desarrollo Sostenible (Agenda 2030 de la ONU, destacando en TI los ODS 8, 9, 12 y 13), los criterios ESG/ASG (ambientales, sociales y de gobierno corporativo), la norma guía ISO 26000 de Responsabilidad Social y, en México, el Distintivo ESR otorgado por el CEMEFI.',
+      },
+    ],
   },
   {
     id: '5-3',
